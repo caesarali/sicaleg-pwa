@@ -1,31 +1,36 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+    <v-app :dark="$root.darkmode" :style="!isAuth ? 'background-color: #009688' : ''">
+        <v-progress-linear
+            :indeterminate="$root.pageLoading" :height="4" background-opacity="0"
+            color="yellow" style="z-index: 9999; position: fixed" class="ma-0">
+        </v-progress-linear>
+        <navbar v-if="isAuth"/>
+
+        <v-content>
+            <router-view />
+            <search />
+        </v-content>
+
+        <bottom-nav v-if="isAuth" />
+    </v-app>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
+import { mapState, mapGetters } from 'vuex'
+import Search from './components/Search'
+import Navbar from './components/layouts/Navbar'
+import BottomNav from './components/layouts/BottomNav'
+export default {
+    name: 'App',
+    computed: {
+        ...mapState(['token']),
+        ...mapGetters(['isAuth'])
+    },
+    components: { Navbar, BottomNav, Search },
+	data () {
+		return {
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+		}
+    }
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>
