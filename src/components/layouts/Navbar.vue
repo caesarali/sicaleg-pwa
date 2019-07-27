@@ -21,15 +21,15 @@
             </template>
             <v-list dense>
                 <v-list-item :to="{ name: 'setting' }">
-                    <v-list-item-icon>
+                    <v-list-item-avatar class="mr-2 my-0">
                         <v-icon>mdi-settings-outline</v-icon>
-                    </v-list-item-icon>
+                    </v-list-item-avatar>
                     <v-list-item-title>Setting</v-list-item-title>
                 </v-list-item>
                 <v-list-item>
-                    <v-list-item-icon>
+                    <v-list-item-avatar class="mr-2 my-0">
                         <v-icon>mdi-brightness-4</v-icon>
-                    </v-list-item-icon>
+                    </v-list-item-avatar>
                     <v-list-item-content>
                         <v-list-item-title>Dark Mode</v-list-item-title>
                     </v-list-item-content>
@@ -41,9 +41,9 @@
 
                 <v-divider></v-divider>
                 <v-list-item @click="postLogout">
-                    <v-list-item-icon>
+                    <v-list-item-avatar class="mr-2 my-0">
                         <v-icon>mdi-logout-variant</v-icon>
-                    </v-list-item-icon>
+                    </v-list-item-avatar>
                     <v-list-item-title>Logout</v-list-item-title>
                 </v-list-item>
             </v-list>

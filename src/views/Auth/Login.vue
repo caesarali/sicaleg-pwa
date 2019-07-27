@@ -9,8 +9,8 @@
                 </div>
                 <v-card>
                     <v-card-title class="d-block text-center">
-                        <h6 class="title">SI CALEG</h6>
-                        <small class="mb-3 caption" >PORTAL RELAWAN</small>
+                        <h6 class="title">SIMCALEG</h6>
+                        <small class="mb-3 caption">PORTAL RELAWAN</small>
                     </v-card-title>
                     <v-card-text>
                         <v-form @submit.prevent="postLogin">

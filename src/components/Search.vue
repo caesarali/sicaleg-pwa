@@ -30,7 +30,7 @@
                                             Tambah pendukung
                                         </v-btn>
                                     </v-card-title>
-                                    <template v-if="Object.keys(result).length">
+                                    <template v-if="!result || Object.keys(result).length">
                                         <v-card-text class="pt-0">
                                             <result-row field="Nama" :value="result.name" />
                                             <result-row field="NIK" :value="result.nik" />
@@ -121,7 +121,7 @@ export default {
             this.searching = true
             $axios.get('/voter/' + this.key)
             .then(({ data }) => this.result = data)
-            .catch()
+            .catch(() => this.result = null)
             .then(() => this.searching = false)
         },
 

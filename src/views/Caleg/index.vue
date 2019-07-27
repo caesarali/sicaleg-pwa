@@ -21,14 +21,13 @@
 				<v-card class="mt-3">
 					<v-tabs v-model="active" background-color="teal" grow dark slider-color="white">
 						<v-tab ripple>DAPIL</v-tab>
-						<v-tab ripple>VISI</v-tab>
-						<v-tab ripple>MISI</v-tab>
+						<v-tab ripple>PARTAI</v-tab>
 					</v-tabs>
 					<v-tabs-items v-model="active">
 						<v-tab-item>
 							<v-card flat>
 								<v-card-title class="pt-2">
-									<h6 class="title">{{ caleg.dapil }}</h6>
+									<h6 class="subtitle">{{ caleg.dapil }}</h6>
 								</v-card-title>
 								<v-card-text>
 									<p v-for="(item, index) in dapil" :key="index" class="mb-1">
@@ -40,12 +39,10 @@
 						</v-tab-item>
 						<v-tab-item>
 							<v-card flat>
-								<v-card-text>VISI</v-card-text>
-							</v-card>
-						</v-tab-item>
-						<v-tab-item>
-							<v-card flat>
-								<v-card-text>MISI</v-card-text>
+								<v-card-text class="text-center">
+									<h2 class="mb-1">{{ partai.name }}</h2>
+									<p class="text-uppercase mb-0">{{ partai.fullname }}</p>
+								</v-card-text>
 							</v-card>
 						</v-tab-item>
 					</v-tabs-items>
@@ -62,6 +59,7 @@ export default {
 		return {
 			caleg: [],
 			dapil: [],
+			partai: [],
 			active: null,
 		}
 	},
@@ -76,6 +74,7 @@ export default {
 			.then(({ data }) => {
 				this.caleg = data.caleg
 				this.dapil = data.dapil
+				this.partai = data.partai
 			})
 			.catch((error) => {
 				let data = error.response.data

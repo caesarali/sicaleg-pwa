@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import $axios from '../../api';
+import $axios from "../../api";
 export default {
 	data() {
 		return {
@@ -49,6 +49,8 @@ export default {
 				this.supporters = data.supporters
 				this.target = data.target
 			})
+			.catch()
+			.then(() => this.$root.pageLoading = false)
 		}
 	},
 
