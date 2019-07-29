@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const $axios = axios.create({
-    baseURL: 'https://sicaleg.web/api/v2',
+    baseURL: 'https://sicaleg.smartinovasi.com/api/v2',
     headers: {
         Authorization: localStorage.getItem('token') != 'null' ? 'Bearer ' + localStorage.getItem('token') : '',
         'Content-Type': 'application/json'
