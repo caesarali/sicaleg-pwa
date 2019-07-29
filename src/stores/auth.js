@@ -1,4 +1,5 @@
 import $axios from "../api.js"
+import axios from 'axios'
 
 const state = () => ({
 
@@ -17,17 +18,13 @@ const actions = {
             commit('SET_LOADING', true, { root: true })
             $axios.post('/login', payload)
             .then((response) => {
-                //KEMUDIAN JIKA RESPONNYA SUKSES
                 if (response.data.status == 'success') {
-                    //MAKA LOCAL STORAGE DAN STATE TOKEN AKAN DISET MENGGUNAKAN
-                    //API DARI SERVER RESPONSE
-                    localStorage.setItem('token', response.data.data.token)
-                    // axios.defaults.headers.common['Authorization'] = localStorage.getItem('token') != 'null' ? 'Bearer ' + localStorage.getItem('token') : '';
-                    commit('SET_TOKEN', response.data.data.token, { root: true })
+                    localStorage.setItem('token', response.data.data)
+                    $axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.data
+                    commit('SET_TOKEN', response.data.data, { root: true })
                 } else {
                     commit('SET_ERRORS', { invalid: 'Email/Password Salah' }, { root: true })
                 }
-                //JANGAN LUPA UNTUK MELAKUKAN RESOLVE AGAR DIANGGAP SELESAI
                 resolve(response.data)
             })
             .catch((error) => {

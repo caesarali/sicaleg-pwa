@@ -62,12 +62,13 @@ export default {
         ...mapActions('auth', ['submit']),
         ...mapMutations(['CLEAR_ERRORS']),
 
-        async postLogin() {
+        postLogin() {
             this.loading = true
-            await this.submit(this.data).then(() => {
+            this.submit(this.data).then(() => {
                 if (this.isAuth) {
                     this.CLEAR_ERRORS()
                     this.$router.push({ name: 'home' })
+                    // location.reload()
                 }
             })
         }

@@ -73,6 +73,8 @@ export default {
 		keyword(value) {
 			if (value == '' || value == null) {
 				this.getSupporters()
+			} else {
+				this.loading = false
 			}
 		}
 	},

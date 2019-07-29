@@ -11,7 +11,7 @@
 							<h6 class="font-weight-light subtitle-2"><b>TOTAL DUKUNGAN</b></h6>
 							<h6 class="font-weight-light subtitle-1">{{ supporters }}</h6>
 							<v-divider></v-divider>
-							<h6 class="font-weight-light subtitle-1"><b>Target:</b> {{ target }} (20%)</h6>
+							<h6 class="font-weight-light subtitle-1"><b>Target:</b> {{ target.total }} ({{ target.percent }}%)</h6>
 						</div>
 					</v-card-title>
 				</v-card>
@@ -38,7 +38,10 @@ export default {
 	data() {
 		return {
 			supporters: 0,
-			target: 0
+			target: {
+				percent: 0,
+				total: 0
+			}
 		}
 	},
 
