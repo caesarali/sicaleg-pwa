@@ -23,7 +23,7 @@
                             <v-flex>
                                 <v-card>
                                     <v-card-title d-flex>
-                                        <h3>Hasil Pencarian</h3>
+                                        <h3 class="title">Hasil Pencarian</h3>
                                         <v-spacer></v-spacer>
                                         <v-btn v-if="Object.keys(result).length && !result.is_supporter" dark text color="teal" left class="my-0 mr-3 hidden-sm-and-down" @click="add()">
                                             <v-icon dark left>mdi-plus</v-icon>

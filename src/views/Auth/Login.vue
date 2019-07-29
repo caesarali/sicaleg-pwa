@@ -1,6 +1,6 @@
 <template>
     <v-container fluid fill-height>
-        <v-layout justify-center style="margin-top: 100px">
+        <v-layout justify-center align-center style="margin-top: -90px">
             <v-flex xs12 sm6 md3>
                 <div class="text-center pa-5">
                     <v-avatar size="70" tile class="mr-3">

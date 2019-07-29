@@ -5,7 +5,7 @@
         </v-avatar>
 
         <v-toolbar-title class="headline text-uppercase">
-            <span>SI</span>
+            <span>SIM</span>
             <span class="font-weight-light">CALEG</span>
         </v-toolbar-title>
 
