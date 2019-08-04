@@ -4,7 +4,7 @@
             <v-card>
                 <v-toolbar dark color="teal">
                     <v-btn icon dark @click="$root.searchDialog = false">
-                        <v-icon>arrow_back</v-icon>
+                        <v-icon>mdi-arrow-left</v-icon>
                     </v-btn>
                     <v-toolbar-title class="ml-0">Cek Data Pemilih</v-toolbar-title>
                 </v-toolbar>
@@ -13,7 +13,7 @@
                         <v-layout>
                             <v-flex>
                                 <v-form @submit.prevent="search()">
-                                    <v-text-field v-model="key" label="Input NIK pemilih..." color="teal" clear-icon="clear" append-icon="search" :loading="searching" solo clearable>
+                                    <v-text-field v-model="key" label="Input NIK pemilih..." color="teal" clear-icon="mdi-close" append-icon="mdi-magnify" @click:append="search()" :loading="searching" solo clearable>
                                     </v-text-field>
                                 </v-form>
                             </v-flex>
@@ -71,6 +71,7 @@
 
         <alert ref="alert" />
         <confirm ref="confirm" />
+        <bottom-sheet-msg ref="onprocess" />
     </v-layout>
 </template>
 
@@ -79,9 +80,10 @@ import $axios from "../api.js"
 import Confirm from "./Confirm"
 import Alert from "./Alert"
 import ResultRow from "./ResultRow"
+import BottomSheetMsg from "./BottomSheetMsg"
 export default {
     components: {
-        ResultRow, Confirm, Alert
+        ResultRow, Confirm, Alert, BottomSheetMsg
     },
     data() {
         return {
@@ -117,9 +119,9 @@ export default {
         }
     },
     methods: {
-        search() {
+        async search() {
             this.searching = true
-            $axios.get('/voter/' + this.key)
+            let res = await $axios.get('/voter/' + this.key)
             .then(({ data }) => this.result = data)
             .catch(() => this.result = null)
             .then(() => this.searching = false)
@@ -141,6 +143,12 @@ export default {
                         this.$refs.alert.show(data.message, 'error')
                     })
                     .then(() => this.$refs.confirm.close())
+
+                    if (!navigator.onLine) {
+                        this.result.is_supporter = true
+                        this.$refs.confirm.close()
+                        this.$refs.onprocess.show()
+                    }
                 }
             })
         }

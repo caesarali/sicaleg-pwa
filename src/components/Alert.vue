@@ -2,7 +2,7 @@
     <v-snackbar v-model="snackbar" top :color="type" multi-line>
         {{ message }}
         <v-btn dark text @click="snackbar = false">
-            <v-icon>clear</v-icon>
+            <v-icon>mdi-close</v-icon>
         </v-btn>
     </v-snackbar>
 </template>

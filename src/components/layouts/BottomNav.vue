@@ -12,7 +12,12 @@
 
 		<v-btn :to="{ name: 'caleg' }" exact>
 			<span>Caleg</span>
-			<v-icon>far fa-user-circle</v-icon>
+			<v-icon>mdi-account-circle-outline</v-icon>
+		</v-btn>
+
+		<v-btn :to="{ name: 'setting' }" exact>
+			<span>Setting</span>
+			<v-icon>mdi-settings-outline</v-icon>
 		</v-btn>
 	</v-bottom-navigation>
 </template>

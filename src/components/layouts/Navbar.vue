@@ -12,20 +12,14 @@
         <v-spacer></v-spacer>
 
         <v-btn icon @click="$root.searchDialog = true">
-            <v-icon>search</v-icon>
+            <v-icon>mdi-magnify</v-icon>
         </v-btn>
 
         <v-menu transition="scale-transition" origin="top right" :close-on-content-click="false" :nudge-width="190">
             <template v-slot:activator="{ on }">
-                <v-btn icon v-on="on"><v-icon>more_vert</v-icon></v-btn>
+                <v-btn icon v-on="on"><v-icon>mdi-dots-vertical</v-icon></v-btn>
             </template>
             <v-list dense>
-                <v-list-item :to="{ name: 'setting' }">
-                    <v-list-item-avatar class="mr-2 my-0">
-                        <v-icon>mdi-settings-outline</v-icon>
-                    </v-list-item-avatar>
-                    <v-list-item-title>Setting</v-list-item-title>
-                </v-list-item>
                 <v-list-item>
                     <v-list-item-avatar class="mr-2 my-0">
                         <v-icon>mdi-brightness-4</v-icon>

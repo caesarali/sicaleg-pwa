@@ -1,5 +1,4 @@
 import $axios from "../api.js"
-import axios from 'axios'
 
 const state = () => ({
 

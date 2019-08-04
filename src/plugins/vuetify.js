@@ -10,6 +10,6 @@ export default new Vuetify({
       current: 'id',
     },
   icons: {
-    iconfont: 'fa',
+    iconfont: 'mdi',
   },
 });

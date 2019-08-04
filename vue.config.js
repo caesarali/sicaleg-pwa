@@ -1,6 +1,8 @@
+let endpoint = '^' + process.env.VUE_APP_API_URL;
+
 module.exports = {
     pwa: {
-        name: 'SmartCalculator',
+        name: 'SIMCALEG',
         themeColor: '#009688',
         msTileColor: '#009688',
         appleMobileWebAppCapable: 'yes',
@@ -10,7 +12,7 @@ module.exports = {
             navigateFallback: '/index.html',
             runtimeCaching: [
                 {
-                    urlPattern: new RegExp('^https://sicaleg.smartinovasi.com/api/v2/'),
+                    urlPattern: new RegExp(endpoint),
                     handler: 'networkFirst',
                     options: {
                         networkTimeoutSeconds: 20,
@@ -19,6 +21,32 @@ module.exports = {
                             statuses: [0, 200]
                         }
                     }
+                },
+                {
+                    urlPattern: new RegExp(endpoint),
+                    handler: 'networkOnly',
+                    options: {
+                        backgroundSync: {
+                            name: 'api-queue',
+                            options: {
+                                maxRetentionTime: 24 * 60,
+                            }
+                        },
+                    },
+                    method: 'POST'
+                },
+                {
+                    urlPattern: new RegExp(endpoint),
+                    handler: 'networkOnly',
+                    options: {
+                        backgroundSync: {
+                            name: 'api-delete',
+                            options: {
+                                maxRetentionTime: 24 * 60,
+                            }
+                        },
+                    },
+                    method: 'DELETE'
                 }
             ]
         }

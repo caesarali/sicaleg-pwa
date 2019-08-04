@@ -3,7 +3,7 @@
 		<v-layout>
 			<v-flex md4 :class="{ 'px-3 pt-4': $vuetify.breakpoint.smAndDown }" style="margin-bottom: -10px">
 				<v-form @submit.prevent="getSupporters()">
-					<v-text-field :loading="loading" v-model="keyword" class="mb-0" solo label="Cari pendukung..." clearable clear-icon="clear" color="teal" autofocus append-icon="search"></v-text-field>
+					<v-text-field @click:append="getSupporters()" :loading="loading" v-model="keyword" class="mb-0" solo label="Cari pendukung..." clearable clear-icon="mdi-close" color="teal" autofocus append-icon="mdi-magnify"></v-text-field>
 				</v-form>
 			</v-flex>
 		</v-layout>
@@ -20,7 +20,7 @@
 								</v-list-item-content>
 								<v-list-item-action top>
 									<v-list-item-action-text>
-										<v-icon>more_horiz</v-icon>
+										<v-icon>mdi-dots-horizontal</v-icon>
 									</v-list-item-action-text>
 									<v-list-item-action-text>{{ item.created_at }}</v-list-item-action-text>
 								</v-list-item-action>

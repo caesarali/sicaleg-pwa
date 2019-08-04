@@ -26,11 +26,6 @@ export default {
         ...mapState(['token']),
         ...mapGetters(['isAuth'])
     },
-    components: { Navbar, BottomNav, Search },
-	data () {
-		return {
-
-		}
-    }
+    components: { Navbar, BottomNav, Search }
 }
 </script>
