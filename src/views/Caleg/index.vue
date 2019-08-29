@@ -63,6 +63,13 @@ export default {
 			active: null,
 		}
 	},
+	watch: {
+		'$root.onLine'(value) {
+			if (value) {
+				this.getCaleg()
+			}
+		},
+	},
 	computed: {
 		hasCaleg() {
 			return Object.keys(this.caleg).length || this.caleg.length ? true : false

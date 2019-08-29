@@ -24,13 +24,36 @@ Vue.filter('marital', function (value) {
 	}
 })
 
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (event) => {
+    deferredPrompt = event;
+})
+
 const app = new Vue({
 	data: () => ({
 		searchDialog: false,
         darkmode: false,
 		pageLoading: false,
 		onLine: navigator.onLine
-    }),
+	}),
+	computed: {
+		availableToInstall() {
+			return deferredPrompt != undefined ? true : false
+		}
+	},
+	methods: {
+		install() {
+			deferredPrompt.prompt(); // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice.then((result) => {
+                if (result.outcome === 'dismissed') {
+                    console.log('Aplikasi batal di-instal.')
+                } else {
+                    console.log('Aplikasi berhasil di-install.')
+                }
+                deferredPrompt = null;
+            });
+		}
+	},
 	router,
 	store,
 	vuetify,

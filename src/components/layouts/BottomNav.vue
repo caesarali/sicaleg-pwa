@@ -1,5 +1,5 @@
 <template>
-	<v-bottom-navigation value="true" grow color="teal" app>
+	<v-bottom-navigation value="true" grow color="teal" app :style="offline">
 		<v-btn :to="{ name: 'home' }" exact>
 			<span>Home</span>
 			<v-icon>mdi-home-outline</v-icon>
@@ -24,6 +24,10 @@
 
 <script>
 export default {
-
+	computed: {
+		offline() {
+			return this.$root.onLine ? '' : 'bottom: 24px'
+		}
+	}
 }
 </script>

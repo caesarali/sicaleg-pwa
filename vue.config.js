@@ -3,7 +3,7 @@ let endpoint = '^' + process.env.VUE_APP_API_URL;
 module.exports = {
     pwa: {
         name: 'SIMCALEG',
-        themeColor: '#009688',
+        themeColor: '#fff',
         msTileColor: '#009688',
         appleMobileWebAppCapable: 'yes',
         appleMobileWebAppStatusBarStyle: 'default',
@@ -11,6 +11,16 @@ module.exports = {
         workboxOptions: {
             navigateFallback: '/index.html',
             runtimeCaching: [
+                {
+                    urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+                    handler: 'cacheFirst',
+                    options: {
+                        cacheName: 'images',
+                        expiration: {
+                            maxEntries: 10,
+                        },
+                    },
+                },
                 {
                     urlPattern: new RegExp(endpoint),
                     handler: 'networkFirst',
@@ -27,26 +37,13 @@ module.exports = {
                     handler: 'networkOnly',
                     options: {
                         backgroundSync: {
-                            name: 'api-queue',
+                            name: 'post-queue',
                             options: {
                                 maxRetentionTime: 24 * 60,
                             }
                         },
                     },
                     method: 'POST'
-                },
-                {
-                    urlPattern: new RegExp(endpoint),
-                    handler: 'networkOnly',
-                    options: {
-                        backgroundSync: {
-                            name: 'api-delete',
-                            options: {
-                                maxRetentionTime: 24 * 60,
-                            }
-                        },
-                    },
-                    method: 'DELETE'
                 }
             ]
         }

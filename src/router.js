@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import $axios from "./api.js"
 
 import Login from './views/Auth/Login'
 import Home from './views/Home'
@@ -26,6 +27,17 @@ const router = new Router({
 
 //Navigation Guards
 router.beforeEach((to, from, next) => {
+    $axios.interceptors.response.use(function (response) {
+        return response;
+    }, function (error) {
+        if (!error.status && navigator.onLine) {
+            localStorage.setItem('token', null) //RESET LOCAL STORAGE MENJADI NULL
+            store.commit('SET_TOKEN', null) //RESET STATE TOKEN MENJADI NULL
+            next({ name: 'login' })
+        }
+        return Promise.reject(error);
+    });
+
     store.commit('CLEAR_ERRORS')
     if (to.matched.some(record => record.meta.requiresAuth)) {
         let auth = store.getters.isAuth

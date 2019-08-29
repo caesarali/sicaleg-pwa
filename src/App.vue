@@ -6,12 +6,15 @@
         </v-progress-linear>
         <navbar v-if="isAuth"/>
 
-        <v-content>
+        <v-content :style="offline">
             <router-view />
             <search />
         </v-content>
 
         <bottom-nav v-if="isAuth" />
+        <div class="grey darken-3 text-center" style="height:24px; position:fixed; bottom:0; width:100%;" v-if="!$root.onLine">
+            <span class="white--text caption">Tidak ada koneksi</span>
+        </div>
     </v-app>
 </template>
 
@@ -24,7 +27,10 @@ export default {
     name: 'App',
     computed: {
         ...mapState(['token']),
-        ...mapGetters(['isAuth'])
+        ...mapGetters(['isAuth']),
+        offline() {
+			return this.$root.onLine ? '' : 'margin-bottom: 24px'
+		}
     },
     components: { Navbar, BottomNav, Search }
 }

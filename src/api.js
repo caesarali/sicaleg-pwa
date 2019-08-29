@@ -12,12 +12,4 @@ if (token && token != 'null') {
     $axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
 }
 
-$axios.interceptors.response.use(function (response) {
-    return response;
-}, function (error) {
-    // Do something with response error
-    console.log(error.response.status)
-    return Promise.reject(error);
-});
-
 export default $axios;

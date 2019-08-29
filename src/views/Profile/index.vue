@@ -96,7 +96,7 @@ export default {
 			if (Object.keys(profile).length > 0) {
 				return {
 					name: profile.name,
-					level: profile.user.roles[0].display_name,
+					level: profile.user.role.display_name,
 					phone: profile.phone,
 					email: profile.user.email,
 					username: profile.user.username

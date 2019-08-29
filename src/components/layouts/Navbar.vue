@@ -20,6 +20,12 @@
                 <v-btn icon v-on="on"><v-icon>mdi-dots-vertical</v-icon></v-btn>
             </template>
             <v-list dense>
+                <v-list-item @click="$root.install" v-if="$root.availableToInstall">
+                    <v-list-item-avatar class="mr-2 my-0">
+                        <v-icon>mdi-download-outline</v-icon>
+                    </v-list-item-avatar>
+                    <v-list-item-title>Install</v-list-item-title>
+                </v-list-item>
                 <v-list-item>
                     <v-list-item-avatar class="mr-2 my-0">
                         <v-icon>mdi-brightness-4</v-icon>
@@ -29,7 +35,7 @@
                     </v-list-item-content>
                     <v-list-item-action>
                         <v-spacer></v-spacer>
-                        <v-switch v-model="$root.darkmode" color="teal"></v-switch>
+                        <v-switch v-model="$vuetify.theme.dark" color="teal"></v-switch>
                     </v-list-item-action>
                 </v-list-item>
 
@@ -55,6 +61,6 @@ export default {
             this.logout()
             this.$router.push({ name: 'login' })
         }
-    }
+    },
 }
 </script>

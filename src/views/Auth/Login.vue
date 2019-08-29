@@ -14,11 +14,11 @@
                     </v-card-title>
                     <v-card-text>
                         <v-form @submit.prevent="postLogin">
-                            <v-text-field color="teal" :error="errors.email && errors.email.length > 0" :error-messages="errors.email" v-model="data.email" prepend-inner-icon="person" name="email" label="Email" clear-icon="clear" type="text" clearable></v-text-field>
-                            <v-text-field color="teal" :error="errors.password && errors.password.length > 0" :error-messages="errors.password" v-model="data.password" prepend-inner-icon="lock" name="password" label="Password" id="password" type="password" clear-icon="clear" clearable></v-text-field>
+                            <v-text-field color="teal" :error="errors.email && errors.email.length > 0" :error-messages="errors.email" v-model="data.email" prepend-inner-icon="mdi-account" name="email" label="Email" clear-icon="mdi-close" type="text" clearable></v-text-field>
+                            <v-text-field color="teal" :error="errors.password && errors.password.length > 0" :error-messages="errors.password" v-model="data.password" prepend-inner-icon="mdi-lock" name="password" label="Password" id="password" type="password" clear-icon="mdi-close" clearable></v-text-field>
                             <div class="text-center">
                                 <v-btn color="teal" dark type="submit" block :loading="isLoading">
-                                    <v-icon left>mdi-login</v-icon>
+                                    <v-icon left>mdi-login-variant</v-icon>
                                     Login
                                 </v-btn>
                             </div>
@@ -30,7 +30,7 @@
         <v-snackbar v-model="errors.invalid" top color="error" multi-line>
             Login Gagal !!
             <v-btn dark text @click="CLEAR_ERRORS()">
-                <v-icon>clear</v-icon>
+                <v-icon>mdi-close</v-icon>
             </v-btn>
         </v-snackbar>
     </v-container>

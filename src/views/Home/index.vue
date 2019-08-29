@@ -1,5 +1,5 @@
 <template>
-	<v-container class="fill-height">
+	<v-container class="fill-height" v-on:update="getDashboardData()">
 		<v-layout wrap align-start justify-center>
 			<v-flex xs12 md4 class="mt-1">
 				<v-card>
@@ -43,6 +43,14 @@ export default {
 				total: 0
 			}
 		}
+	},
+
+	watch: {
+		'$root.onLine'(value) {
+			if (value) {
+				this.getDashboardData()
+			}
+		},
 	},
 
 	methods: {

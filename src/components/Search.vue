@@ -137,6 +137,7 @@ export default {
                     .then(({ data }) => {
                         this.result = data.data
                         this.$refs.alert.show(data.message, 'success')
+                        this.$emit('update')
                     })
                     .catch((error) => {
                         let data = error.response.data
